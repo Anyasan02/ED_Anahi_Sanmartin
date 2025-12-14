@@ -1,61 +1,75 @@
-﻿using System;
+using System;
 
-namespace RegistroEstudiante
+// Clase Circulo
+public class Circulo
 {
-    class Estudiante
+    // Propiedad privada para el radio del círculo
+    public double Radio { get; set; }
+
+    // Constructor para inicializar el radio
+    public Circulo(double radio)
     {
-        public int Id;
-        public string Nombres;
-        public string Apellidos;
-        public string Direccion;
-        public string[] Telefonos;
-
-        public void MostrarDatos()
-        {
-            Console.WriteLine("\n--- DATOS DEL ESTUDIANTE ---");
-            Console.WriteLine("ID: " + Id);
-            Console.WriteLine("Nombres: " + Nombres);
-            Console.WriteLine("Apellidos: " + Apellidos);
-            Console.WriteLine("Dirección: " + Direccion);
-
-            Console.WriteLine("Teléfonos:");
-            for (int i = 0; i < Telefonos.Length; i++)
-            {
-                Console.WriteLine($"Teléfono {i + 1}: {Telefonos[i]}");
-            }
-        }
+        Radio = radio;
     }
 
-    class Program
+    // Método para calcular el área del círculo
+    // El área se calcula usando la fórmula A = π * r^2
+    // Devuelve un valor de tipo double
+    public double CalcularArea()
     {
-        static void Main(string[] args)
-        {
-            Estudiante estudiante = new Estudiante();
+        return Math.PI * Radio * Radio;
+    }
 
-            Console.Write("Ingrese ID: ");
-            estudiante.Id = int.Parse(Console.ReadLine());
+    // Método para calcular el perímetro del círculo
+    // El perímetro se calcula usando la fórmula P = 2 * π * r
+    // Devuelve un valor de tipo double
+    public double CalcularPerimetro()
+    {
+        return 2 * Math.PI * Radio;
+    }
+}
 
-            Console.Write("Ingrese nombres: ");
-            estudiante.Nombres = Console.ReadLine();
+// Clase Cuadrado
+public class Cuadrado
+{
+    // Propiedad privada para el lado del cuadrado
+    public double Lado { get; set; }
 
-            Console.Write("Ingrese apellidos: ");
-            estudiante.Apellidos = Console.ReadLine();
+    // Constructor para inicializar el lado
+    public Cuadrado(double lado)
+    {
+        Lado = lado;
+    }
 
-            Console.Write("Ingrese dirección: ");
-            estudiante.Direccion = Console.ReadLine();
+    // Método para calcular el área del cuadrado
+    // El área se calcula usando la fórmula A = lado^2
+    // Devuelve un valor de tipo double
+    public double CalcularArea()
+    {
+        return Lado * Lado;
+    }
 
-            estudiante.Telefonos = new string[3];
+    // Método para calcular el perímetro del cuadrado
+    // El perímetro se calcula usando la fórmula P = 4 * lado
+    // Devuelve un valor de tipo double
+    public double CalcularPerimetro()
+    {
+        return 4 * Lado;
+    }
+}
 
-            for (int i = 0; i < estudiante.Telefonos.Length; i++)
-            {
-                Console.Write($"Ingrese teléfono {i + 1}: ");
-                estudiante.Telefonos[i] = Console.ReadLine();
-            }
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Crear una instancia de Circulo con un radio de 5
+        Circulo circulo = new Circulo(5);
+        Console.WriteLine("Área del Círculo: " + circulo.CalcularArea());
+        Console.WriteLine("Perímetro del Círculo: " + circulo.CalcularPerimetro());
 
-            estudiante.MostrarDatos();
-
-            Console.WriteLine("\nPresione una tecla para salir...");
-            Console.ReadKey();
-        }
+        // Crear una instancia de Cuadrado con un lado de 4
+        Cuadrado cuadrado = new Cuadrado(4);
+        Console.WriteLine("Área del Cuadrado: " + cuadrado.CalcularArea());
+        Console.WriteLine("Perímetro del Cuadrado: " + cuadrado.CalcularPerimetro());
     }
 }
