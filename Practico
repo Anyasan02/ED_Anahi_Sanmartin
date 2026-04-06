@@ -1,0 +1,32 @@
+# Clase Nodo para crear el árbol
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.hijos = []
+
+    def agregar_hijo(self, hijo):
+        self.hijos.append(hijo)
+
+# Función para recorrer el árbol en preorden
+def preorden(nodo):
+    print(nodo.valor, end=" -> ")
+    for hijo in nodo.hijos:
+        preorden(hijo)
+
+# Crear el árbol de categorías de productos
+raiz = Nodo("Productos")
+# Agregar hijos principales
+electronica = Nodo("Electrónica")
+ropa = Nodo("Ropa")
+raiz.agregar_hijo(electronica)
+raiz.agregar_hijo(ropa)
+
+# Agregar subcategorías
+electronica.agregar_hijo(Nodo("Celulares"))
+electronica.agregar_hijo(Nodo("Computadoras"))
+ropa.agregar_hijo(Nodo("Hombres"))
+ropa.agregar_hijo(Nodo("Mujeres"))
+
+# Ejecutar recorrido preorden y mostrar el árbol
+print("Recorrido preorden del árbol de categorías:")
+preorden(raiz)
